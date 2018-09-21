@@ -13,25 +13,27 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
                 }
             },
             {
-                test:/\.css$/,
-                use:['style-loader', 'css-loader']
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
-
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     plugins: [
         new CleanWebpackPlugin(['index']),
         new HtmlWebpackPlugin({
-        title: 'Minimum-Viable',
-        filename: 'index.html',
-        template: './static/index.html',
+            title: 'Minimum-Viable',
+            filename: 'index.html',
+            template: './static/index.html'
         })
     ]
 };
